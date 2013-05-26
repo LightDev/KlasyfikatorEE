@@ -19,7 +19,7 @@
                 <div id="MENU">
                     <ul>
                         <!--<li><a href="admin_panel.php" style="">PANEL ADMINISTRACYJNY</a></li>-->
-                        <li><a href="adminIndex.jsp" >Zarządzaj instancjami</a></li>
+                        <li class="set"><a href="adminIndex.jsp" class="set" >Zarządzaj instancjami</a></li>
                         <li><a href=".jsp" >Budowa klasyfikatora</a></li>
                         <li><a href=".jsp" >Ewaluacja klasyfikatora</a></li>
                         <!--        <li><a href=".php" ></a></li>
@@ -29,7 +29,8 @@
                 <div id="TRESC">
                     <h1 class="h2_decoration underline">Instancja o parametrach: została zmodyfikowana pomyślnie</h1><br />
                     <div class="wrap">
-
+                        <br />
+                        <a href="adminIndex.jsp">Wróć do zarządania instancjami</a>
                     </div>
                 </div>
             </div>

@@ -45,6 +45,7 @@ input {
 }
 a {
     color: #1F5D9B;
+    text-decoration: none;
 }
 a:hover {
     color: #3297FD;
@@ -53,15 +54,9 @@ html{
 
 }
 body {
-    /*    font-family: Arial, Helvetica, sans-serif;
-                    font-family: "Verdana";
-        font-size: 13px;*/
     font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
     font-size: 13px;
-
-
     background: #fff;
-
     background: -moz-linear-gradient(top,  rgba(191,191,191,1) 0%, rgba(191,191,191,0.99) 1%, rgba(255,255,255,0) 100%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(191,191,191,1)), color-stop(1%,rgba(191,191,191,0.99)), color-stop(100%,rgba(255,255,255,0)));
     background: -webkit-linear-gradient(top,  rgba(191,191,191,1) 0%,rgba(191,191,191,0.99) 1%,rgba(255,255,255,0) 100%);
@@ -69,9 +64,6 @@ body {
     background: -ms-linear-gradient(top,  rgba(191,191,191,1) 0%,rgba(191,191,191,0.99) 1%,rgba(255,255,255,0) 100%);
     background: linear-gradient(top,  rgba(191,191,191,1) 0%,rgba(191,191,191,0.99) 1%,rgba(255,255,255,0) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bfbfbf', endColorstr='#00ffffff',GradientType=0 );
-
-
-
 }
 .wrap {
     margin:0 auto;
@@ -321,7 +313,7 @@ input.button{
     text-decoration: none;
     /*font: bold 11px ,Arial, Helvetica; Change the em value to scale the button*/
 
-    font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+    /*font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;*/
     display: inline-block;
     text-align: center;
     color: #fff;
@@ -330,6 +322,9 @@ input.button{
     padding: 3px;
     border: 1px solid #9c9c9c; /* Fallback style */
     border: 1px solid rgba(0, 0, 0, 0.3);
+    background: -webkit-linear-gradient(top,  #499bea 0%,#207ce5 100%); /* Chrome10+,Safari5.1+ */ 
+    color: #eee;
+
     /*text-shadow: 0 1px 0 #fff;*/
 
     /*    box-shadow: 0 0 .05em rgba(0,0,0,0.4);
@@ -367,4 +362,71 @@ input.button{
 .button, .button span, input span {
     -moz-border-radius: .3em;
     border-radius: .3em;
+}
+#table-3 {
+    border: 1px solid #DFDFDF;
+    background-color: #F9F9F9;
+    width: 100%;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    /*font-family: Arial,"Bitstream Vera Sans",Helvetica,Verdana,sans-serif;*/
+    color: #333;
+}
+#table-3 td, #table-3 th {
+    border-top-color: white;
+    border-bottom: 1px solid #DFDFDF;
+    color: #555;
+}
+#table-3 th {
+    text-shadow: rgba(255, 255, 255, 0.796875) 0px 1px 0px;
+    /*font-family: Georgia,"Times New Roman","Bitstream Charter",Times,serif;*/
+    font-weight: normal;
+    padding: 7px 7px 8px;
+    text-align: left;
+    line-height: 1.3em;
+    font-size: 14px;
+}
+#table-3 td {
+    font-size: 12px;
+    padding: 4px 7px 2px;
+    vertical-align: top;
+}
+
+
+#table-6 {
+    width: 50%;
+    border: 1px solid #B0B0B0;
+}
+#table-6 tbody {
+    /* Kind of irrelevant unless your .css is alreadt doing something else */
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+#table-6 thead {
+    text-align: left;
+}
+#table-6 thead th {
+    background: -moz-linear-gradient(top, #F0F0F0 0, #DBDBDB 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #F0F0F0), color-stop(100%, #DBDBDB));
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F0F0F0', endColorstr='#DBDBDB', GradientType=0);
+    border: 1px solid #B0B0B0;
+    color: #444;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 3px 10px;
+}
+#table-6 td {
+    padding: 3px 10px;
+}
+#table-6 tr:nth-child(even) {
+    background: #F2F2F2;
+}
+#table-6 tr:hover{
+    background: #ddd;
 }

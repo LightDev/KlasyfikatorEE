@@ -16,10 +16,13 @@
     width: 145px;
     /*border: 1px solid #ddd;*/
     /*border-top: 5px solid #1F5D9B;*/
-    -webkit-border-radius: 0px 0px 3px 3px;
-    -moz-border-radius: 0px 0px 7px 3px;
-    border-radius: 0px 0px 7px 7px;
-    border-radius: 3px ;
+    /*    -webkit-border-radius: 0px 0px 3px 3px;
+        -moz-border-radius: 0px 0px 7px 3px;
+        border-radius: 0px 0px 7px 7px;*/
+    /*border-bottom: none;*/
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
 
     box-shadow:1px 1px 4px #807D7D;
     /*margin-top: -15px;*/
@@ -34,6 +37,12 @@
     background: #3297FD;
     background: #eee;
     /*color: #fff;*/
+}
+#MENU ul li:first-child {
+    /*border-bottom: none;*/
+    -webkit-border-radius: 7px 7px 0px 0px;
+    -moz-border-radius: 7px 7px 0px 0px;
+    border-radius: 7px 7px 0px 0px;
 }
 #MENU ul li:last-child {
     border-bottom: none;
@@ -58,11 +67,29 @@
     /*color: #fff;*/
     /*padding: 3px;*/
 }
-#MENU ul li a:selected {
+/*#MENU ul li a:selected {
     background: #3297FD !important;
 }
 #MENU ul li a:active{
     background: #3297FD !important;
+}*/
+.set {
+    /*background: #1F5D9B !important;*/
+    color: #fff !important;
+    font-weight: bold;
+    background: #499bea; /* Old browsers */
+    background: -moz-linear-gradient(top,  #499bea 0%, #207ce5 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#499bea), color-stop(100%,#207ce5)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #499bea 0%,#207ce5 100%) !important; /* Chrome10+,Safari5.1+ */ 
+    background: -o-linear-gradient(top,  #499bea 0%,#207ce5 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #499bea 0%,#207ce5 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #499bea 0%,#207ce5 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#499bea', endColorstr='#207ce5',GradientType=0 ); /* IE6-9 */
+
+}
+.set:hover {
+    background: #3297FD ;
+    color: #eee !important;
 }
 
 /*#MENU ul li:first-child{background:#3297FD;font-weight: bolder;

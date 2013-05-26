@@ -19,7 +19,7 @@
                 <div id="MENU">
                     <ul>
                         <!--<li><a href="admin_panel.php" style="">PANEL ADMINISTRACYJNY</a></li>-->
-                        <li><a href="adminIndex.jsp" >Zarządzaj instancjami</a></li>
+                        <li class="set"><a href="adminIndex.jsp" class="set" >Zarządzaj instancjami</a></li>
                         <li><a href=".jsp" >Budowa klasyfikatora</a></li>
                         <li><a href=".jsp" >Ewaluacja klasyfikatora</a></li>
                         <!--        <li><a href=".php" ></a></li>
@@ -108,12 +108,15 @@
                                             <option value="2">not_recom</option>
                                         </select></td>
                                 </tr>
-                                <!--<br />-->
                                 <tr>                        <!--<br />-->
-                                    <td></td>
-                                    <td></td>
-                                </tr>                        <!--<br />-->
-
+                                    <td>class:</td><td><select name="class">
+                                            <option value="0" >not_recom</option>
+                                            <option value="1" >recommend</option>
+                                            <option value="2" >very_recom</option>
+                                            <option value="3" >priority</option>
+                                            <option value="4" >spec_prior</option>
+                                        </select></td>
+                                </tr>
                                 <tr>                        <!--<br />-->
                                     <td></td>
                                     <td><input type="submit"  class="button" value="Dodaj instancje"/></td>

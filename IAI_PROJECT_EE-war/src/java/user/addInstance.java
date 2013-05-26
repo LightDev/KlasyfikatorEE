@@ -26,17 +26,17 @@ import weka.core.converters.ArffSaver;
  */
 @WebServlet(name = "addInstance", urlPatterns = {"/addInstance"})
 public class addInstance extends HttpServlet {
-    
+
     @EJB
     private MyClassifier myClassifier;
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            
-            String parameters[] = {"parents", "has_nurs", "form", "children", "housing", "finance", "social", "health"};
+
+            String parameters[] = {"parents", "has_nurs", "form", "children", "housing", "finance", "social", "health", "class"};
             String parametersValues[] = new String[parameters.length];
             for (int i = 0; i < parameters.length; i++) {
                 parametersValues[i] = request.getParameter(parameters[i]);
@@ -44,12 +44,12 @@ public class addInstance extends HttpServlet {
             Instances data = myClassifier.initData();
             double[] vals = new double[data.numAttributes()];
             System.out.println("" + data.numAttributes());
-            for (int i = 0; i < data.numAttributes() - 1; i++) {
+            for (int i = 0; i < data.numAttributes(); i++) {
                 vals[i] = Double.valueOf(parametersValues[i]);
             }
             Instance inst = new Instance(1.0, vals);
             data.add(inst);
-            
+
             String fileName = "C:/Users/drgeek/Desktop/Data Mining/PS_IAI/IAI_PROJECT/nursery.data.arff";
             // A File object to represent the filename
             WekaHelper w = new WekaHelper();
@@ -61,9 +61,13 @@ public class addInstance extends HttpServlet {
             //saver.setDestination(newArff);
             saver.writeBatch();
             System.out.println("Dodano nowa instancje");
-            
+            System.out.println(data.numInstances() - 1);
+
+            for (int i = 0; i < data.numAttributes(); i++) {
+                request.setAttribute(data.attribute(i).name(), data.instance(data.numInstances() - 1).stringValue(i));
+            }
             request.getRequestDispatcher("addInstance.jsp").forward(request, response);
-            
+
         } finally {
             out.close();
         }
@@ -84,8 +88,8 @@ public class addInstance extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-            
-            
+
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(addInstance.class
                     .getName()).log(Level.SEVERE, null, ex);
@@ -109,8 +113,8 @@ public class addInstance extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-            
-            
+
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(addInstance.class
                     .getName()).log(Level.SEVERE, null, ex);
