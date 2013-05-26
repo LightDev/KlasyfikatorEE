@@ -22,13 +22,12 @@
                         <li class="set"><a href="adminIndex.jsp" class="set" >Zarządzaj instancjami</a></li>
                         <li><a href="buildClassifier.jsp" >Budowa klasyfikatora</a></li>
                         <li><a href="evaluateClassifier.jsp" >Ewaluacja klasyfikatora</a></li>
-
                         <!--        <li><a href=".php" ></a></li>
                                 <li><a href=".php" ></a></li>-->
                     </ul>
                 </div>
                 <div id="TRESC">
-                    <h1 class="h2_decoration underline">Dodano nową instancję</h1><br />
+                    <h1 class="h2_decoration underline">Usunięto instancję nr ${id}</h1><br />
                     <div class="wrap">
 
                         <table id="table-6">

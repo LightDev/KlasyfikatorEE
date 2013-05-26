@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import javax.annotation.PostConstruct;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import weka.classifiers.Classifier;
@@ -22,19 +23,26 @@ import weka.core.Instances;
 @LocalBean // nie zdefiniowanlismy interfacu bo wywolania lokalne inaczej blad
 public class MyClassifier {
 
-    Instances data;
-    Classifier cls; //klasyfikator
+    private Instances data;
+    private Classifier cls;
+    private String dataPath = "C:/Users/drgeek/Desktop/Data Mining/PS_IAI/IAI_PROJECT/nurseryNew.data.arff";
+    private String modelPath = "C:/Users/drgeek/Desktop/Data Mining/PS_IAI/IAI_PROJECT/nursery_model.model";
+    private int instanceNum;
+    private int attributeNum;
 
+    //@PostConstruct
     public Instances initData() throws IOException, ClassNotFoundException, Exception {
-        BufferedReader buf = new BufferedReader(new FileReader("C:/Users/drgeek/Desktop/Data Mining/PS_IAI/IAI_PROJECT/nursery.data.arff"));
+        BufferedReader buf = new BufferedReader(new FileReader(getDataPath()));
         data = new Instances(buf);
         data.setClassIndex(data.numAttributes() - 1);
+        setInstanceNum(data.numInstances());
+        setAttributeNum(data.numAttributes());
         buf.close();
         return data;
     }
 
     public Classifier initClassifier(String[] options) throws IOException, ClassNotFoundException, Exception {
-        ObjectInputStream ois = new ObjectInputStream(new FileInputStream("C:/Users/drgeek/Desktop/Data Mining/PS_IAI/IAI_PROJECT/nursery_model.model"));
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(getModelPath()));
         cls = (Classifier) ois.readObject();
         cls.setOptions(options);
         cls.buildClassifier(data);
@@ -130,5 +138,61 @@ public class MyClassifier {
         attValsClass.addElement("spec_prior");
         atts.addElement(new Attribute("class", attValsClass));
         return atts;
+    }
+
+    /**
+     * @return the dataPath
+     */
+    public String getDataPath() {
+        return dataPath;
+    }
+
+    /**
+     * @param dataPath the dataPath to set
+     */
+    public void setDataPath(String dataPath) {
+        this.dataPath = dataPath;
+    }
+
+    /**
+     * @return the modelPath
+     */
+    public String getModelPath() {
+        return modelPath;
+    }
+
+    /**
+     * @param modelPath the modelPath to set
+     */
+    public void setModelPath(String modelPath) {
+        this.modelPath = modelPath;
+    }
+
+    /**
+     * @return the instanceNum
+     */
+    public int getInstanceNum() {
+        return instanceNum;
+    }
+
+    /**
+     * @param instanceNum the instanceNum to set
+     */
+    public void setInstanceNum(int instanceNum) {
+        this.instanceNum = instanceNum;
+    }
+
+    /**
+     * @return the attributeNum
+     */
+    public int getAttributeNum() {
+        return attributeNum;
+    }
+
+    /**
+     * @param attributeNum the attributeNum to set
+     */
+    public void setAttributeNum(int attributeNum) {
+        this.attributeNum = attributeNum;
     }
 }
