@@ -50,18 +50,15 @@ public class addInstance extends HttpServlet {
             Instance inst = new Instance(1.0, vals);
             data.add(inst);
 
-            String fileName = "C:/Users/drgeek/Desktop/Data Mining/PS_IAI/IAI_PROJECT/nursery.data.arff";
-            // A File object to represent the filename
+            String fileName = myClassifier.getDataPath();
             WekaHelper w = new WekaHelper();
             w.removeFile(fileName);
-            File newArff = new File("C:/Users/drgeek/Desktop/Data Mining/PS_IAI/IAI_PROJECT/nursery.data.arff");
+            File newArff = new File(myClassifier.getDataPath());
             ArffSaver saver = new ArffSaver();
             saver.setInstances(data);
             saver.setFile(newArff);
-            //saver.setDestination(newArff);
+            //saver.setDestination(newArff); //dla 3.6.9 nieakutalne
             saver.writeBatch();
-            System.out.println("Dodano nowa instancje");
-            System.out.println(data.numInstances() - 1);
 
             for (int i = 0; i < data.numAttributes(); i++) {
                 request.setAttribute(data.attribute(i).name(), data.instance(data.numInstances() - 1).stringValue(i));

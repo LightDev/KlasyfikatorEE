@@ -19,35 +19,17 @@
                 <div id="MENU">
                     <ul>
                         <!--<li><a href="admin_panel.php" style="">PANEL ADMINISTRACYJNY</a></li>-->
-                        <li class="set"><a href="adminIndex.jsp" class="set" >Zarządzaj instancjami</a></li>
+                        <li><a href="adminIndex.jsp">Zarządzaj instancjami</a></li>
                         <li><a href="buildClassifier.jsp" >Budowa klasyfikatora</a></li>
-                        <li><a href="evaluateClassifier.jsp" >Ewaluacja klasyfikatora</a></li>
+                        <li class="set"><a href="evaluateClassifier.jsp" class="set">Ewaluacja klasyfikatora</a></li>
                         <!--        <li><a href=".php" ></a></li>
                                 <li><a href=".php" ></a></li>-->
                     </ul>
                 </div>
                 <div id="TRESC">
-                    <h1 class="h2_decoration underline">Instancja o parametrach: została zmodyfikowana pomyślnie</h1><br />
                     <div class="wrap">
-                        <table id="table-6">
-                            <thead>
-                            <th>Atrybut</th><th>Wartość</th>
-                            </thead>
-                            <tbody>        
-                                <tr><td>parents</td><td>${parents}</td></tr>
-                                <tr><td>has_nurs</td><td>${has_nurs}</td></tr>
-                                <tr><td>form</td><td>${form}</td></tr>
-                                <tr><td>children</td><td>${children}</td></tr>
-                                <tr><td>housing</td><td>${housing}</td></tr>
-                                <tr><td>finance</td><td>${finance}</td></tr>
-                                <tr><td>social</td><td>${social}</td></tr>
-                                <tr><td>health</td><td>${health}</td></tr>
-                                <tr><td>class</td><td>${class}</td></tr>
-                            </tbody>
-                        </table>
-                        <br />
-
-                        <a href="adminIndex.jsp">Wróć do zarządania instancjami</a>
+                        <h1 class="h2_decoration underline">Podsumowanie ewaluacji</h1><br />
+                        <textarea rows="20" style="width: 480px;font-size: 11px">${evaluationOutput}</textarea>
                     </div>
                 </div>
             </div>

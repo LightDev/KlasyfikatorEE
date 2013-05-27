@@ -1,3 +1,4 @@
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -27,27 +28,23 @@
                     </ul>
                 </div>
                 <div id="TRESC">
-                    <h1 class="h2_decoration underline">Instancja o parametrach: została zmodyfikowana pomyślnie</h1><br />
+                    <!--                    <h1 class="h2_decoration underline">Dodaj nową instancję</h1><br />-->
                     <div class="wrap">
+
+                        <h1 class="h2_decoration underline">Statystyka bazy</h1><br />
                         <table id="table-6">
                             <thead>
                             <th>Atrybut</th><th>Wartość</th>
                             </thead>
-                            <tbody>        
-                                <tr><td>parents</td><td>${parents}</td></tr>
-                                <tr><td>has_nurs</td><td>${has_nurs}</td></tr>
-                                <tr><td>form</td><td>${form}</td></tr>
-                                <tr><td>children</td><td>${children}</td></tr>
-                                <tr><td>housing</td><td>${housing}</td></tr>
-                                <tr><td>finance</td><td>${finance}</td></tr>
-                                <tr><td>social</td><td>${social}</td></tr>
-                                <tr><td>health</td><td>${health}</td></tr>
-                                <tr><td>class</td><td>${class}</td></tr>
+                            <tbody> 
+                                <tr>
+                                    <td>Liczba instancji</td><td>${instNum}</td>
+                                </tr>
+                                <tr>
+                                    <td>Liczba atrybutów</td><td>${attrNum}</td>
+                                </tr>
                             </tbody>
-                        </table>
-                        <br />
-
-                        <a href="adminIndex.jsp">Wróć do zarządania instancjami</a>
+                        </table> 
                     </div>
                 </div>
             </div>

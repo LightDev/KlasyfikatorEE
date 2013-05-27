@@ -29,11 +29,13 @@
                 <div id="TRESC">
                     <div class="wrap">
                         <h1 class="h2_decoration underline">Ewaluacja klasyfikatora</h1><br />
-                        <form action="addInstance" method="post">
+                        <form action="evaluateClassifier" method="post">
                             <span>Podaj zbiór uczący</span>
                             <input type="file" name="learn_set" id="learn_set" /><br />
                             <span>Podaj zbiór testowy</span>
                             <input type="file" name="test_set" id="test_set" /><br />
+                            <span>Podaj podział:</span>
+                            <input type="text" name="percent_split" style="width: 20px;" /><span>% dla zbioru uczącego</span><br />
                             <input type="submit"  class="button" value="Wyślij"/><br />
                         </form>
                     </div>

@@ -5,8 +5,8 @@ import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import javax.annotation.PostConstruct;
 import javax.ejb.LocalBean;
+import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 import weka.classifiers.Classifier;
 import weka.core.Attribute;
@@ -16,7 +16,8 @@ import weka.core.Instances;
 
 //@EJB
 //komponent sesyjny bezstanowy 
-@Stateless
+//@Stateless
+@Stateful
 //        (
 //        //name = "XXX" //mappedName = "SSS"
 //        )
@@ -25,7 +26,8 @@ public class MyClassifier {
 
     private Instances data;
     private Classifier cls;
-    private String dataPath = "C:/Users/drgeek/Desktop/Data Mining/PS_IAI/IAI_PROJECT/nurseryNew.data.arff";
+    private String dataPath = "C:/Users/drgeek/Desktop/Data Mining/PS_IAI/IAI_PROJECT/nursery.data.arff";
+    //private String dataPath = "C:/Users/drgeek/Desktop/Data Mining/PS_IAI/IAI_PROJECT/nurseryNew.data.arff";
     private String modelPath = "C:/Users/drgeek/Desktop/Data Mining/PS_IAI/IAI_PROJECT/nursery_model.model";
     private int instanceNum;
     private int attributeNum;
@@ -41,12 +43,26 @@ public class MyClassifier {
         return data;
     }
 
+    public Classifier initClassifier() throws IOException, ClassNotFoundException, Exception {
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(getModelPath()));
+        cls = (Classifier) ois.readObject();
+        //cls.setOptions(options);
+        cls.buildClassifier(data);
+        return cls;
+    }
+
     public Classifier initClassifier(String[] options) throws IOException, ClassNotFoundException, Exception {
         ObjectInputStream ois = new ObjectInputStream(new FileInputStream(getModelPath()));
         cls = (Classifier) ois.readObject();
         cls.setOptions(options);
         cls.buildClassifier(data);
         return cls;
+    }
+
+    public void setClassIndex(Instances data) {
+        if (data.classIndex() == -1) {
+            data.setClassIndex(data.numAttributes() - 1);
+        }
     }
 
     public String classifyOneInstance(Instances dataset, double[] vals) throws Exception {
@@ -62,7 +78,7 @@ public class MyClassifier {
                 : (instanceClass.equals("recommend") ? "Wskazane"
                 : (instanceClass.equals("very_recom") ? "Bardzo wskazane"
                 : (instanceClass.equals("priority") ? "Konieczne"
-                : (instanceClass.equals("spec_prior") ? "Absolutnie niezbÄ™dne" : "lol"))));
+                : (instanceClass.equals("spec_prior") ? "Absolutnie niezbêdne" : "lol"))));
         return instanceClass;
     }
 
@@ -171,6 +187,7 @@ public class MyClassifier {
     /**
      * @return the instanceNum
      */
+    //@Deprecated
     public int getInstanceNum() {
         return instanceNum;
     }
@@ -179,7 +196,7 @@ public class MyClassifier {
      * @param instanceNum the instanceNum to set
      */
     public void setInstanceNum(int instanceNum) {
-        this.instanceNum = instanceNum;
+        this.instanceNum = data.numInstances();
     }
 
     /**
@@ -193,6 +210,6 @@ public class MyClassifier {
      * @param attributeNum the attributeNum to set
      */
     public void setAttributeNum(int attributeNum) {
-        this.attributeNum = attributeNum;
+        this.attributeNum = data.numAttributes();
     }
 }

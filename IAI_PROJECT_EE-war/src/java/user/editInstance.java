@@ -17,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import weka.core.Instances;
 
 /**
@@ -51,6 +52,9 @@ public class editInstance extends HttpServlet {
         try {
             String id = String.valueOf(Integer.valueOf(request.getParameter("id_to_edit")) - 1);
             editInstance(request, id);
+            HttpSession session = request.getSession();
+
+            session.setAttribute("id_to_edit2", request.getParameter("id_to_edit"));
             request.getRequestDispatcher("editInstance.jsp").forward(request, response);
 
         } finally {

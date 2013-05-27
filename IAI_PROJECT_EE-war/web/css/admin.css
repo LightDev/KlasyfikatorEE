@@ -91,6 +91,13 @@
     background: #3297FD ;
     color: #eee !important;
 }
+table tbody tr td select,table input[type="text"]{
+    /*width: 60px ;*/
+    border: 1px solid #ddd;
+}
+table tbody input[type="text"]:hover{
+    border: 1px solid #bbb;
+}
 
 /*#MENU ul li:first-child{background:#3297FD;font-weight: bolder;
                         color: #fff;

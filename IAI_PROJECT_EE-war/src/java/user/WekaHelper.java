@@ -1,10 +1,22 @@
 package user;
 
 import java.io.File;
+import java.io.IOException;
 import weka.core.Attribute;
 import weka.core.FastVector;
+import weka.core.Instances;
+import weka.core.converters.ArffSaver;
 
 public class WekaHelper {
+
+    public void saveArffFile(String fileName, Instances data) throws IOException {
+        File newArff = new File(fileName);
+        ArffSaver saver = new ArffSaver();
+        saver.setInstances(data);
+        saver.setFile(newArff);
+        //saver.setDestination(newArff); //dla 3.6.9 nieakutalne
+        saver.writeBatch();
+    }
 
     public void removeFile(String fileName) {
         File f = new File(fileName);
