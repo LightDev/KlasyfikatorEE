@@ -20,8 +20,10 @@
                     <ul>
                         <!--<li><a href="admin_panel.php" style="">PANEL ADMINISTRACYJNY</a></li>-->
                         <li ><a href="adminIndex.jsp" >Zarządzaj instancjami</a></li>
-                        <li class="set"><a href="buildClassifier.jsp" class="set">Budowa klasyfikatora</a></li>
+                        <li class="set"><a href="buildClassifier" class="set">Budowa klasyfikatora</a></li>
                         <li><a href="evaluateClassifier.jsp" >Ewaluacja klasyfikatora</a></li>
+                        <li><a href="Stats" >Statystyki</a></li>
+
                         <!--        <li><a href=".php" ></a></li>
                                 <li><a href=".php" ></a></li>-->
                     </ul>
@@ -39,51 +41,51 @@
                                         <td>binarySplits</td>
                                         <td>
                                             <select name="binarySplits">
-                                                <option value="0" ${class == '0' ? 'selected' : ''}>True</option>
-                                                <option value="1" ${class == '1' ? 'selected' : ''}>False</option>
+                                                <option value="0" ${binarySplits == 'true' ? 'selected' : ''}>True</option>
+                                                <option value="1" ${binarySplits == 'false' ? 'selected' : ''}>False</option>
                                             </select>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>confidenceFactor:</td>
-                                        <td><input type="text" name="minNumObj" /></td>
+                                        <td><input type="text" name="confidenceFactor" value="${confidenceFactor}" /></td>
                                     </tr>
                                     <tr>
                                         <td>debug:</td>
                                         <td>
                                             <select name="debug">
-                                                <option value="0" ${class == '0' ? 'selected' : ''}>True</option>
-                                                <option value="1" ${class == '1' ? 'selected' : ''}>False</option>
+                                                <option value="0" ${debug == 'true' ? 'selected' : ''}>True</option>
+                                                <option value="1" ${debug == 'false' ? 'selected' : ''}>False</option>
                                             </select>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>minNumObj:</td>
-                                        <td><input type="text" name="minNumObj" /></td>
+                                        <td><input type="text" name="minNumObj" value="${minNumObj}" /></td>
                                     </tr>
                                     <tr>
                                         <td>numFolds:</td>
-                                        <td><input type="text" name="numFolds" /></td>
+                                        <td><input type="text" name="numFolds" value="${numFolds}" /></td>
                                     </tr>
                                     <tr>
                                         <td>reducedErrorPruning:</td>
                                         <td>
                                             <select name="reducedErrorPruning">
-                                                <option value="0" ${class == '0' ? 'selected' : ''}>True</option>
-                                                <option value="1" ${class == '1' ? 'selected' : ''}>False</option>
+                                                <option value="0" ${class == 'true' ? 'selected' : ''}>True</option>
+                                                <option value="1" ${class == 'false' ? 'selected' : ''}>False</option>
                                             </select>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>seed:</td>
-                                        <td><input type="text" name="seed" /></td>
+                                        <td><input type="text" name="seed" value="${seed}" /></td>
                                     </tr>
                                     <tr>
                                         <td>unprunned:</td>
                                         <td>
                                             <select name="unprunned">
-                                                <option value="0" ${class == '0' ? 'selected' : ''}>True</option>
-                                                <option value="1" ${class == '1' ? 'selected' : ''}>False</option>
+                                                <option value="0" ${class == 'true' ? 'selected' : ''}>True</option>
+                                                <option value="1" ${class == 'false' ? 'selected' : ''}>False</option>
                                             </select>
                                         </td>
                                     </tr>

@@ -53,7 +53,15 @@ public class classifyNewInstance extends HttpServlet {
 //            eval.evaluateModel(cls, data);
 //            String evalInfo = eval.toSummaryString("Statyki z ewaluacji", false);
 //            request.setAttribute("evaluation", evalInfo);
-            request.setAttribute("class", myClassifier.classifyOneInstance(dataset, vals));
+
+            Instances dat = myClassifier.classifyOneInstance(dataset, vals);
+//            for (int i = 0; i < myClassifier.getAttributeNum(); i++) {
+//                request.setAttribute(dat.attribute(i).name(), String.valueOf((int) vals[i]));
+//            }
+            for (int i = 0; i < dataset.numAttributes(); i++) {
+                request.setAttribute(dat.attribute(i).name(), dat.instance(dat.numInstances() - 1).stringValue(i));
+            }
+            request.setAttribute("class", myClassifier.getClassName(dat, vals));
             request.getRequestDispatcher("classificationResult.jsp").forward(request, response);
 
         } finally {

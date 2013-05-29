@@ -39,7 +39,16 @@ public class removeInstance extends HttpServlet {
             Instances data = myClassifier.initData();
             //String id = request.getParameter("id_to_remove");
             String id = String.valueOf(Integer.valueOf(request.getParameter("id_to_remove")) - 1);
+
+            for (int i = 0; i < myClassifier.getAttributeNum(); i++) {
+                request.setAttribute(data.attribute(i).name(),
+                        data.instance(Integer.valueOf(id)).stringValue(i));
+            }
+
             data.delete(Integer.valueOf(id));
+
+
+
 
             String fileName = myClassifier.getDataPath();
             WekaHelper w = new WekaHelper();
@@ -52,10 +61,6 @@ public class removeInstance extends HttpServlet {
             saver.writeBatch();
             System.out.println("Usunieto instancje nr " + id);
 
-            for (int i = 0; i < myClassifier.getAttributeNum(); i++) {
-                request.setAttribute(data.attribute(i).name(),
-                        data.instance(Integer.valueOf(id)).stringValue(i));
-            }
             String sId = String.valueOf(Integer.valueOf(id) + 1);
             request.setAttribute("id", sId);
 

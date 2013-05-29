@@ -65,11 +65,15 @@ public class MyClassifier {
         }
     }
 
-    public String classifyOneInstance(Instances dataset, double[] vals) throws Exception {
+    public Instances classifyOneInstance(Instances dataset, double[] vals) throws Exception {
         //utworzenie nowej instancji
         Instance inst = new Instance(1.0, vals);
         dataset.add(inst);
         dataset.setClassIndex(data.numAttributes() - 1);
+        return dataset;
+    }
+
+    public String getClassName(Instances dataset, double[] vals) throws Exception {
         double clsLabel = cls.classifyInstance(dataset.instance(0));
         dataset.instance(0).setClassValue(clsLabel);
 

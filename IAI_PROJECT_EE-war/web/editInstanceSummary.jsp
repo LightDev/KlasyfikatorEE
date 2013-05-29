@@ -20,8 +20,10 @@
                     <ul>
                         <!--<li><a href="admin_panel.php" style="">PANEL ADMINISTRACYJNY</a></li>-->
                         <li class="set"><a href="adminIndex.jsp" class="set" >Zarządzaj instancjami</a></li>
-                        <li><a href="buildClassifier.jsp" >Budowa klasyfikatora</a></li>
+                        <li><a href="buildClassifier" >Budowa klasyfikatora</a></li>
                         <li><a href="evaluateClassifier.jsp" >Ewaluacja klasyfikatora</a></li>
+                        <li><a href="Stats" >Statystyki</a></li>
+
                         <!--        <li><a href=".php" ></a></li>
                                 <li><a href=".php" ></a></li>-->
                     </ul>

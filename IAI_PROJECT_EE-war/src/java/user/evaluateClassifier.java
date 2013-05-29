@@ -67,8 +67,10 @@ public class evaluateClassifier extends HttpServlet {
 
             //ewaluacja
             System.out.println("allDataNum " + allData.numInstances());
-            Evaluation eval = new Evaluation(testData);
-            eval.evaluateModel(bean.initClassifier(), allData);
+            Evaluation eval = new Evaluation(allData);
+            eval.evaluateModel(bean.initClassifier(), testData);
+//            Evaluation eval = new Evaluation(testData);
+//            eval.evaluateModel(bean.initClassifier(), allData);
 
             String evaluationOutput = eval.toSummaryString("Statyki z ewaluacji", false);
             request.setAttribute("evaluationOutput", evaluationOutput);

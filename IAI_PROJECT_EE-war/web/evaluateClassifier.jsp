@@ -20,8 +20,10 @@
                     <ul>
                         <!--<li><a href="admin_panel.php" style="">PANEL ADMINISTRACYJNY</a></li>-->
                         <li><a href="adminIndex.jsp">Zarządzaj instancjami</a></li>
-                        <li><a href="buildClassifier.jsp" >Budowa klasyfikatora</a></li>
+                        <li><a href="buildClassifier" >Budowa klasyfikatora</a></li>
                         <li class="set"><a href="evaluateClassifier.jsp" class="set">Ewaluacja klasyfikatora</a></li>
+                        <li><a href="Stats" >Statystyki</a></li>
+
                         <!--        <li><a href=".php" ></a></li>
                                 <li><a href=".php" ></a></li>-->
                     </ul>
@@ -30,12 +32,12 @@
                     <div class="wrap">
                         <h1 class="h2_decoration underline">Ewaluacja klasyfikatora</h1><br />
                         <form action="evaluateClassifier" method="post">
-                            <span>Podaj zbiór uczący</span>
-                            <input type="file" name="learn_set" id="learn_set" /><br />
-                            <span>Podaj zbiór testowy</span>
-                            <input type="file" name="test_set" id="test_set" /><br />
-                            <span>Podaj podział:</span>
-                            <input type="text" name="percent_split" style="width: 20px;" /><span>% dla zbioru uczącego</span><br />
+                            <!--                            <span>Podaj zbiór uczący</span>
+                                                        <input type="file" name="learn_set" id="learn_set" /><br />
+                                                        <span>Podaj zbiór testowy</span>
+                                                        <input type="file" name="test_set" id="test_set" /><br />-->
+                            <span>Podaj podział dla zbioru uczącego: </span>
+                            <input type="text" name="percent_split" style="width: 20px;" /><span>%</span><br />
                             <input type="submit"  class="button" value="Wyślij"/><br />
                         </form>
                     </div>

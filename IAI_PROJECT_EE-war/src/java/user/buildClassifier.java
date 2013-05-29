@@ -1,9 +1,12 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package user;
 
 import ejbpackage.MyClassifier;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Enumeration;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
@@ -13,14 +16,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import weka.classifiers.Classifier;
+import weka.classifiers.rules.PART;
 
 /**
  *
  * @author drgeek
  */
-@WebServlet(urlPatterns = {"/updateClassifier"})
-public class updateClassifier extends HttpServlet {
+@WebServlet(name = "buildClassifier", urlPatterns = {"/buildClassifier"})
+public class buildClassifier extends HttpServlet {
 
+    /**
+     * Processes requests for both HTTP
+     * <code>GET</code> and
+     * <code>POST</code> methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @EJB
     private MyClassifier myClassifier;
 
@@ -29,21 +43,22 @@ public class updateClassifier extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
+            String params[] = {};
             myClassifier.initData();
-
             Classifier cls = myClassifier.initClassifier();
-//            Enumeration options = cls.glistOptions();
-//            while (options.hasMoreElements()) {
-//                System.out.println(((String)options.nextElement()).);
-//            }
-//             for (options d : options.values()) {
-//     System.out.println(d);
-// }
-//            //String options[] = cls.getOptions();
-//            for (int i = 0; i < options.length; i++) {
-//                System.out.println(options[i]);
-//            }
-//            out.print(cls.getOptions());
+
+            PART updateCls = (PART) cls;
+            request.setAttribute("binarySplits", updateCls.getBinarySplits());
+            request.setAttribute("confidenceFactor", updateCls.getConfidenceFactor());
+            request.setAttribute("debug", updateCls.getDebug());
+            request.setAttribute("minNumObj", updateCls.getMinNumObj());
+            request.setAttribute("numFolds", updateCls.getNumFolds());
+            request.setAttribute("reducedErrorPruning:", updateCls.getReducedErrorPruning());
+            request.setAttribute("seed", updateCls.getSeed());
+            request.setAttribute("unprunned", updateCls.getUnpruned());
+            System.out.println("getUn " + updateCls.getUnpruned());
+            request.getRequestDispatcher("buildClassifier.jsp").forward(request, response);
+
         } finally {
             out.close();
         }
@@ -65,9 +80,9 @@ public class updateClassifier extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(updateClassifier.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(buildClassifier.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {
-            Logger.getLogger(updateClassifier.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(buildClassifier.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -86,9 +101,9 @@ public class updateClassifier extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(updateClassifier.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(buildClassifier.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {
-            Logger.getLogger(updateClassifier.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(buildClassifier.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
